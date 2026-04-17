@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+
+  --color-neon-cyan: #00f0ff;
+  --color-neon-purple: #b829ff;
+  --color-neon-green: #39ff14;
+  --color-neon-pink: #ff00e5;
+
+  --color-dark-900: #0a0a0a;
+  --color-dark-950: #050505;
+}
+
+:root {
+  --background: var(--color-dark-950);
+  --foreground: #ffffff;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Custom Utilities */
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .glass-strong {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .cyber-btn {
+    @apply relative px-6 py-3 font-display font-black uppercase tracking-tighter transition-all duration-300 overflow-hidden border-2 border-neon-cyan text-neon-cyan hover:bg-neon-cyan hover:text-black;
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 90% 100%, 0 100%);
+  }
+
+  .cyber-btn-fill {
+    @apply relative px-6 py-3 font-display font-black uppercase tracking-tighter transition-all duration-300 overflow-hidden bg-neon-cyan text-black border-2 border-neon-cyan hover:bg-transparent hover:text-neon-cyan;
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0 100%, 0 30%);
+  }
+
+  .cyber-input {
+    @apply w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-white/20 focus:outline-none focus:border-neon-cyan transition-colors;
+  }
+
+  .bg-grid {
+    background-image: 
+      linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.2);
+  border-radius: 10px;
+}
